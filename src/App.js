@@ -14,12 +14,8 @@ function App() {
 <Navbar/>
 <div className="container">
   <Routes>
-      <Route 
-       path="/" 
-      element={<AboutMe />} 
-              />
                 <Route 
-       path="/Portfolio" 
+       path="/" 
       element={<Webpage />} 
               />
   <Route 
