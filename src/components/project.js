@@ -1,21 +1,41 @@
 import React from 'react';
+import ReactCardFlip from 'react-card-flip';
+import img from "../images/sunflower.jpeg";
+
+const Card = ({ project }) => {
+  const [isFlipped, setIsFlipped] = React.useState(false);
+  return (
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+      <div
+        onMouseEnter={() => setIsFlipped((prev) => !prev)}
+        className="CardFront"
+      >
+    <div class="shadow w-1/4 ">
+  <img width="400" length ="300" src={img} alt=""/>
+</div>
+      </div>
+      <div
+        onMouseLeave={() => setIsFlipped((prev) => !prev)}
+        className="CardBack"
+      >
+      <div class="shadow w-1/4 ">
+  <img width="400"  height ="300" src={img} alt=""/>
+</div>
+      </div>
+    </ReactCardFlip>
+  );
+};
 
 function Project ({props}) {
-console.log(props)
+
   return(
     <div>
-      <div className='grid grid-cols-4 gap-2 px-8 py-6'>
+      <div className=''>
     {props.map(props => (
-      <div key={props.title} class="">
-    <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2">{props.title}</div>
-      <p class="text-gray-700 text-base"> {props.description} </p>
-      <p class="text-gray-700 text-base"> Tech Stack: {props.TechStack} </p>
-      <a href={props.github} class="text-blue-400 text-base"> Github Link </a>
-      <a href={props.link} class="text-blue-400 text-base"> Deployment Link </a>
-    
-    </div>
-    </div>
+      <div key={props.title} class="relative content-center">
+          <Card project={props} key={props.title} />
+      </div>
+
     ))} 
     </div>
       </div>
